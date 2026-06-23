@@ -1,0 +1,75 @@
+{
+  "name": "@mcowger/pi-llmgateway",
+  "version": "0.1.0",
+  "license": "MIT",
+  "type": "module",
+  "private": false,
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "pi"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mcowger/pi-llmgateway"
+  },
+  "pi": {
+    "extensions": [
+      "./src/extensions/provider/index.ts"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src",
+    "schema.json",
+    "README.md",
+    "!src/**/*.test.ts"
+  ],
+  "dependencies": {
+    "@aliou/pi-utils-settings": "^0.17.0",
+    "@earendil-works/pi-ai": "^0.79.10"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.15",
+    "@changesets/cli": "^2.27.11",
+    "@earendil-works/pi-coding-agent": "0.79.10",
+    "@earendil-works/pi-tui": "0.79.10",
+    "@types/node": "^22.0.0",
+    "husky": "^9.1.7",
+    "ts-json-schema-generator": "^2.4.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  },
+  "overrides": {
+    "@earendil-works/pi-ai": "0.79.10",
+    "@earendil-works/pi-tui": "0.79.10"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check",
+    "format": "biome check --write",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "gen:schema": "ts-json-schema-generator --path src/config.ts --type LLMGatewayConfig --no-type-check -o schema.json",
+    "check:schema": "ts-json-schema-generator --path src/config.ts --type LLMGatewayConfig --no-type-check -o /tmp/schema-check.json && diff -q schema.json /tmp/schema-check.json",
+    "check:lockfile": "bun install --frozen-lockfile",
+    "prepare": "[ -d .git ] && husky || true",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "bun changeset publish"
+  },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-coding-agent": {
+      "optional": true
+    },
+    "@earendil-works/pi-tui": {
+      "optional": true
+    }
+  }
+}
