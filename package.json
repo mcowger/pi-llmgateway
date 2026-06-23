@@ -29,7 +29,7 @@
   ],
   "dependencies": {
     "@aliou/pi-utils-settings": "^0.17.0",
-    "@earendil-works/pi-ai": "^0.79.10"
+    "@earendil-works/pi-ai": "0.79.10"
   },
   "peerDependencies": {
     "@earendil-works/pi-coding-agent": "*",

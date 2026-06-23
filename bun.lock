@@ -6,7 +6,7 @@
       "name": "@mcowger/pi-llmgateway",
       "dependencies": {
         "@aliou/pi-utils-settings": "^0.17.0",
-        "@earendil-works/pi-ai": "^0.79.10",
+        "@earendil-works/pi-ai": "0.79.10",
       },
       "devDependencies": {
         "@biomejs/biome": "^2.4.15",
