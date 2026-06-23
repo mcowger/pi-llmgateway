@@ -1,4 +1,4 @@
-import { getApiProvider } from "@earendil-works/pi-ai";
+import { streamSimpleOpenAICompletions } from "@earendil-works/pi-ai/openai-completions";
 import type {
   ExtensionAPI,
   ProviderModelConfig,
@@ -27,10 +27,7 @@ function registerProvider(
 ): void {
   const { baseUrl, routing, webSearch } = configLoader.getConfig();
 
-  const provider = getApiProvider("openai-completions");
-  const baseStreamSimple = provider?.streamSimple as
-    | AnyStreamSimple
-    | undefined;
+  const baseStreamSimple = streamSimpleOpenAICompletions as AnyStreamSimple;
 
   const config: Parameters<ExtensionAPI["registerProvider"]>[1] = {
     baseUrl,
